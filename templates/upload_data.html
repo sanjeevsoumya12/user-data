@@ -1,0 +1,65 @@
+{% extends "base.html"%} {% block content%} 
+
+<div class="container">
+  <!--Django Form-->
+  <div class="py-5 text-center bg-white text-black">
+    <h1 class="mb-3">Upload Image</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     {{form}}
+     <input type="submit" class="btn btn-danger" value="Upload">
+    </form>
+   </div>
+
+  <!--Django Model-->
+  <div>
+    <form style="margin-top: 80px;margin-left: 965px;" ;>
+      <input type="text" name="q" method="GET"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <div class="row mt-4">
+    {% for data in datas %}
+    <div class="col-lg-4 col-md-6 col-sm-12 pb-4 ">
+      <div class="card h-100 p-4 bg-dark">
+        <p style="color:white">{{data.description}}</p>
+        {% if data.extension == ".mp4"%}
+          <video  width="100%" controls>
+            <source src="/media/{{data.file}}" type="video/mp4">
+          </video>
+        {%else%}
+           <img height="280"   src="/media/{{data.file}}"></img>
+        {%endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% if datas.has_other_pages %}
+<nav aria-label="Page navigation example" style="margin-left: 70px;">
+  <ul class="pagination">
+    {% if datas.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ datas.previous_page_number }}" aria-label="Previous">
+           <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+    {% endif %}
+    {% for i in datas.paginator.page_range %}
+      {% if datas.number == i %}
+      <li class="page-item"><a class="page-link" href="#">{{i}}</a></li>
+      {% else %}
+      <li class="page-item"><a  class="page-link"href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if datas.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ datas.next_page_number }}"  aria-label="Next">
+           <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock%}

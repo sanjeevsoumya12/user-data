@@ -19,9 +19,10 @@ from django.urls import path,include
 
 
 from .views import home_view
-from accounts.views import (login_view,logout_view,register_view)
-from main.views import upload
+from accounts.views import (login_view,logout_view,register_view,home_view)
+from main.views import (upload_data)
 from django.conf.urls.static import static #add this
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +30,11 @@ urlpatterns = [
     # path("login/",login_view),
     path("register/",register_view),
     path("logout/",logout_view),
-    path("upload/",upload)
+    # path("upload/",upload),
+    # path("datas/",data_list),
+    path("datas/upload/",upload_data),
+    path("home/",home_view)
+
 ] 
 
 if settings.DEBUG:

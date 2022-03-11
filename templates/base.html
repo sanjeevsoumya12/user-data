@@ -20,13 +20,13 @@
         <title>Hello, world!</title>
       </head>
       <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
           <div class="container-fluid">
             {% if request.user.is_authenticated%}
-            <h1 class="navbar-brand">Navbar</h1>
-            <a href="/logout">logout</a>
+            <h1 class="navbar-brand ms-4" style="color: aliceblue">álbum</h1>
+            <a class="me-4"href="/logout">logout</a>
             {%else%}
-            <h1 class="navbar-brand">Navbar</h1>
+            <h1 class="navbar-brand ms-4" style="color: aliceblue">álbum</h1>
             {%endif%}
             <button
               class="navbar-toggler"

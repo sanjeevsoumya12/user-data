@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'UserData.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_database',
+        'NAME': 'django_database1',
         'USER': 'root',
         'PASSWORD': 'T@ny1234',
         'HOST': '127.0.0.1',
@@ -150,3 +150,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'youremail@gmail.com'  
+EMAIL_HOST_PASSWORD = 'yourpassword'  
+EMAIL_PORT = 587  

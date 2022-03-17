@@ -12,12 +12,12 @@
    </div>
 
   <!--Django Model-->
-  <div>
+  <!-- <div>
     <form style="margin-top: 80px;margin-left: 965px;" ;>
       <input type="text" name="q" method="GET"/>
       <input type="submit"/>
     </form>
-  </div>
+  </div> -->
   <div class="row mt-4">
     {% for data in datas %}
     <div class="col-lg-4 col-md-6 col-sm-12 pb-4 ">
@@ -27,9 +27,41 @@
           <video  width="100%" controls>
             <source src="/media/{{data.file}}" type="video/mp4">
           </video>
-        {%else%}
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+            <a href="/media/{{data.file}}">
+              View
+            </a>
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+              Edit
+            </button>
+          </div>
+        {% else %}
            <img height="280"   src="/media/{{data.file}}"></img>
-        {%endif %}
+           <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+            <a href="/media/{{data.file}}">
+              View
+            </a>
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+              Edit
+            </button>
+          </div>
+        {% endif %}
       </div>
     </div>
     {% endfor %}

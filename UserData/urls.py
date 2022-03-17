@@ -20,7 +20,7 @@ from django.urls import path,include
 
 from .views import home_view
 from accounts.views import (login_view,logout_view,register_view,home_view)
-from main.views import (upload_data)
+from main.views import (upload_data,data_search_view)
 from django.conf.urls.static import static #add this
 
 
@@ -31,7 +31,7 @@ urlpatterns = [
     path("register/",register_view),
     path("logout/",logout_view),
     # path("upload/",upload),
-    # path("datas/",data_list),
+    path("search/",data_search_view),
     path("datas/upload/",upload_data),
     path("home/",home_view)
 

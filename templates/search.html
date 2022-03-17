@@ -1,0 +1,15 @@
+{%extends "base.html"%} {%block content%}
+<div>
+  <form   action= "" method="GET"  style="margin-top: 80px; margin-left: 965px" ;>
+    <input type="text" name="q" method="GET" />
+    <input type="submit" />
+  </form>
+  {% if object %}
+    <!-- {% for obj in object%} -->
+    <img height="280" src="/media/{{obj.file}}"></img>
+    <!-- {% endfor %} -->
+    <!-- <h1>{{object}}</h1> -->
+    <!-- <img height="280" src="/media/{{object.file}}"></img> -->
+  {%endif%}
+</div>  
+{%endblock%}

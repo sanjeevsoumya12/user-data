@@ -1,9 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .form import CustomUserCreationForm
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+# from django.contrib import messages
+# from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+# from django.http import HttpResponse  
+# from django.shortcuts import render, redirect  
+# from django.contrib.auth import login, authenticate  
+# # from .forms import SignupForm  
+# from django.contrib.sites.shortcuts import get_current_site  
+# from django.utils.encoding import force_bytes
+# from django.utils.http import urlsafe_base64_encode
+# from django.template.loader import render_to_string  
+# # from .tokens import account_activation_token  
+# from django.contrib.auth.models import User  
+# from django.core.mail import EmailMessage  
+# from accounts.token import TokenGenerator
 
 
 # Create your views here.
@@ -49,6 +61,31 @@ def register_view(request):
             "form": form
         }
     return render(request, "accounts/register.html", context)
+    # if request.method == 'POST':  
+    #     form =  CustomUserCreationForm(request.POST)  
+    #     if form.is_valid():  
+    #             # save form in the memory not in database  
+    #             user = form.save(commit=False)  
+    #             user.is_active = False  
+    #             user.save()  
+    #             # to get the domain of the current site  
+    #             current_site = get_current_site(request)  
+    #             mail_subject = 'Activation link has been sent to your email id' 
+    #             message = render_to_string('accounts/acc_active_email.html', {  
+    #                 'user': user,  
+    #                 'domain': current_site.domain,  
+    #                 'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),  
+    #                 'token':TokenGenerator.make_token(user),  
+    #             })  
+    #             to_email = form.cleaned_data.get('email')  
+    #             email = EmailMessage(  
+    #                         mail_subject, message, to=[to_email]  
+    #             )  
+    #             email.send()  
+    #             return   render(request, 'accounts/register.html')  
+    #     else:  
+    #         form =  CustomUserCreationForm()  
+    #     return render(request, 'accounts/register.html', {'form': form})  
 
 def home_view(request):
     return render(request,"home_view.html")
